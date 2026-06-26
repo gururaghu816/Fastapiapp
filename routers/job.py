@@ -1,6 +1,17 @@
 from fastapi import APIRouter
 
 router=APIRouter(prefix="/job",tags=["job"])
+jobs=[]
+
+@router.post("/")
+def create_job(job:jobCreate):
+    jobs.append(job)
+    return jobs
+
+@router.get("/")
+def get_all_job():
+    return jobs
+
 
 @router.get("/")
 def read_job():
