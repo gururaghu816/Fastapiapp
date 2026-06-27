@@ -1,6 +1,6 @@
-from sqlalchemy import Column,Integer,String,Enum,relationship
+from sqlalchemy import Column,Integer,String,Enum
 from database import Base,engine,SessionLocal
-
+from models.
 
 Base = declarative_base()
 class Company(Base):

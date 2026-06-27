@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from routers import company,job
-from database import Base,engine,SessionLocal
+from database import Base,engine
+from models import company as company_model,job as job_model
 
 app=FastAPI()
 print("engine is",engine)
@@ -17,7 +18,6 @@ def read_root():
 @app.get("/about")
 def read_about():
     return {"about":"This is about page"}
-
 
 
 @app.get("/contact")
