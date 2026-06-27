@@ -1,11 +1,27 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class JobCreate(BaseModel):
-    title:(Optional[str]=True)
-    salary:(Optional[str]=True)
+class JobBase(BaseModel):
+    title: str
+    salary: int
+    description: Optional[str] = None
+    company_id: int
 
 
-class JobUpdate(BaseModel):
-    name:Optional[str]=True
-    salary:Optional[str]=True
+class JobCreate(JobBase):
+    pass
+
+
+class JobUpdate(JobBase):
+    title: Optional[str] = None
+    salary: Optional[int] = None
+    description: Optional[str] = None
+    company_id: Optional[int] = None
+
+
+class JobResponse(JobBase):
+    id: int
+    company_id: int
+
+    class Config:
+        orm_mode = True
