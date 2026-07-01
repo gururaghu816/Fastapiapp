@@ -1,8 +1,8 @@
-interface Job {
+interface Job{
     id:number;
-    title: string;
-    salary: string;
-    description: string
+    title:string;
+    description:string;
+    salary:string;
     company_id:number;
 }
 export type {Job}
