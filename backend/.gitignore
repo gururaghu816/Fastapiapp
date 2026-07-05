@@ -1,0 +1,7 @@
+*.pyc
+env
+node_modules
+#Ignore the .env file which contains sensitive information
+.env
+
+
