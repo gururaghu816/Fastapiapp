@@ -2,7 +2,7 @@
 import NavBar from "./components/NavBar";
 import CompanyCard from "./components/CompanyCard";
 import JobCard from "./components/JobCard";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
 import {useEffect,useState} from "react";
 import { getCompanies,updateCompany,deleteCompany,createCompany } from "./Services/CompanyService";
 import type {Company} from "./types/company"
