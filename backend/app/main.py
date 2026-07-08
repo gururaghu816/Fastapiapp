@@ -19,9 +19,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-print(engine)
+@app on event("startup")
+async def startup event():
+    from database import engine
+    async with engine.begine() as conn:
+        await conn.run sybc(Base.metadata.create_all)
 
-Base.metadata.create_all(bind=engine)
+
+#Base.metadata.create_all(bind=engine)
 
 app.include_router(auth.router)
 app.include_router(company.router)

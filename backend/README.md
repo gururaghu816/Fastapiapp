@@ -58,3 +58,14 @@ npm install axios
 
 useState- which is used to store the data in the component and which
 will update the component when the data is updated or changed
+
+
+# Before Deployment checklist
+.env configured 
+on startup create all tables in db
+async await in every api and function  and  session handling for all apis
+exception handling for all apis->
+eg:
+1.resource not found 
+2.internal server error
+3.
