@@ -42,3 +42,4 @@ def ask_career_chatbot_response(question: str, session_id: str = "default") -> s
         {"configurable": {"session_id": session_id}}
     )
     return response.content
+
