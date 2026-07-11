@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 from database import get_db
 from schemas.rag import (
     ResumeRequest, ResumeResponse,
@@ -14,12 +14,14 @@ from services.rag_service import rag_job_search
 
 router = APIRouter(prefix="/rag", tags=["RAG"])
 
-
 @router.post("/embed-jobs", response_model=EmbedResponse)
-def embed_jobs(db: Session = Depends(get_db)):
-    count = embed_all_jobs(db)
-    return EmbedResponse(message=f"Embedded {count} jobs into Qdrant", count=count)
+async def embed_jobs(db: AsyncSession = Depends(get_db)):
+    count = await embed_all_jobs(db)
 
+    return EmbedResponse(
+        message=f"Embedded {count} jobs into Qdrant",
+        count=count
+    )
 
 @router.post("/search", response_model=SemanticSearchResponse)
 def semantic_search(request: JobSearchRequest):
